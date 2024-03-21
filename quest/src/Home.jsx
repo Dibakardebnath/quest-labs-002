@@ -1,178 +1,198 @@
-
-import React, { useState } from 'react'
-import './Home.css'
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import AddIcon from '@mui/icons-material/Add';
-import SubjectIcon from '@mui/icons-material/Subject';
-import { Modal, Button, Typography, Box, TextField } from '@mui/material';
+import React, { useState } from "react";
+import "./Home.css";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import AddIcon from "@mui/icons-material/Add";
+import SubjectIcon from "@mui/icons-material/Subject";
+import { Modal, Button, Typography, Box, TextField } from "@mui/material";
 
 const Home = () => {
+  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
 
-    //.........................TODO.......................
-    const [open, setOpen] = useState(false);
-    const [inputValue, setInputValue] = useState({
-        inputValue1:"",
-        inputValue2:""
-    });
-    console.log(inputValue)
-   
-    const [firstState,setFirstState] = useState([
-        {projectName:"Project A",like:"2"},
-        {projectName:"Project B",like:"2"},
-        {projectName:"Project C",like:"2"},
-        {projectName:"Project D",like:"2"},
-        
-    ])
-  
-    const handleOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
-  
-    const handleInputChange = (e) => {
-        const {name, value} = e.target
+  const [inputValue, setInputValue] = useState({
+    inputValue1: "",
+    inputValue2: "",
+  });
+  const [columns, setColumns] = useState({
+    todo: [
+      { projectName: "Project A", like: "", id: "todo1" },
+      { projectName: "Project B", like: "2", id: "todo2" },
+      { projectName: "Project C", like: "1", id: "todo3" },
+      { projectName: "Project D", like: "", id: "todo4" },
+    ],
+    inProgress: [
+      { projectName: "Project E", like: "9", id: "inProgress1" },
+      { projectName: "Project F", like: "", id: "inProgress2" },
+      { projectName: "Project G", like: "", id: "inProgress3" },
+    ],
+    review: [
+      { projectName: "Project W", like: "14", id: "review1" },
+      { projectName: "Project T", like: "10", id: "review2" },
+      { projectName: "Project U", like: "6", id: "todo4" },
+      { projectName: "Project Q", like: "", id: "todo4" },
+    ],
+    done: [
+      { projectName: "Project L", like: "9", id: "done1" },
+      { projectName: "Project N", like: "4", id: "done2" },
+      { projectName: "Project X", like: "24", id: "done2" },
+    ],
+  });
 
-           setInputValue((prevVal)=>({
-              ...prevVal,
-              [name]:value,
-           }))
-    };
-    const handleAddButtonClick = () => {
-        const newItem = {
-          projectName: inputValue.inputValue1,
-          like: inputValue.inputValue2,
-        };
-        setFirstState((prevItems) => [...prevItems, newItem]);
-        handleClose();
-      };
-    const [inputval, setinputval] = useState({
-        inputval1:"",
-        inputval2:""
-    });
-    console.log(inputval)
-   
-    const [frstState,setfrstState] = useState([
-        {projectName:"Project E",like:"2"},
-        {projectName:"Project F",like:"2"},
-        {projectName:"Project G",like:"2"},
-        {projectName:"Project H",like:"2"},
-        
-    ])
-  
-    const handlechng = (e) => {
-        const {name, value} = e.target
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
-           setinputval((prevVal)=>({
-              ...prevVal,
-              [name]:value,
-           }))
-    };
-    const handleAdButtonClick = () => {
-        const newItem = {
-          projectName: inputval.inputval1,
-          like: inputval.inputval2,
-        };
-        setfrstState((prevItems) => [...prevItems, newItem]);
-        handleClose();
-      };
-      const generateRandomColor = () => {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-          color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-      };
-    //.........................Progress End......................
-     //........................Review Start.........................
-    
-     const [inputvalues, setinputvalues] = useState({
-         inputvalues1:"",
-         inputvalues2:""
-     });
-     console.log(inputvalues)
-    
-     const [firstst,setfirstst] = useState([
-         {projectName:"Project I",like:"2"},
-         {projectName:"Project J",like:"2"},
-         {projectName:"Project K",like:"2"},
-        
-     ])
-   
-  
-   
-     const handlchnge = (e) => {
-         const {name, value} = e.target
- 
-            setinputvalues((prevVal)=>({
-               ...prevVal,
-               [name]:value,
-            }))
-     };
-     const handlePlusButtonClick = () => {
-         const newItem = {
-           projectName: inputvalues.inputvalues1,
-           like: inputvalues.inputvalues2,
-         };
-         setfirstst((prevItems) => [...prevItems, newItem]);
-         handleClose();
-       };
-     //..........................Review End..................
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-     //.........................Done start....................
-     const [inpValues, setinpValues] = useState({
-        inpValues1:"",
-        inpValues2:""
-    });
-    console.log(inpValues)
-   
-    const [frstStates,setfrstStates] = useState([
-        {projectName:"Project L",like:"2"},
-        {projectName:"Project M",like:"2"},
-      
-       
-    ])
-  
-  
-    const handlInptChanges = (e) => {
-        const {name, value} = e.target
+  const handleOpen1 = () => {
+    setOpen1(true);
+  };
 
-           setinpValues((prevVal)=>({
-              ...prevVal,
-              [name]:value,
-           }))
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+  const handleOpen2 = () => {
+    setOpen2(true);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
+  const handleOpen3 = () => {
+    setOpen3(true);
+  };
+
+  const handleClose3 = () => {
+    setOpen3(false);
+  };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setInputValue((prevVal) => ({
+      ...prevVal,
+      [name]: value,
+    }));
+  };
+
+  const handleAddButtonClick = (columnId) => {
+    const newItem = {
+      projectName: inputValue.inputValue1,
+      like: inputValue.inputValue2,
+      id: `${columnId}-${Math.random().toString(36).substr(2, 9)}`, // Generate a unique ID
     };
-    const handleAddingButtonClick = () => {
-        const newItem = {
-          projectName: inpValues.inpValues1,
-          like: inpValues.inpValues2,
-        };
-        setfrstStates((prevItems) => [...prevItems, newItem]);
-        handleClose();
-      };
-     //.........................Done End................................
-   
+    setColumns((prevColumns) => ({
+      ...prevColumns,
+      [columnId]: [...prevColumns[columnId], newItem],
+    }));
+    handleClose();
+    handleClose1();
+    handleClose2();
+    handleClose3();
+  };
+
+  const handleDragStart = (e, projectId) => {
+    e.dataTransfer.setData("text/plain", projectId);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+  const handleDrop = (e, targetColumn) => {
+    console.log("Target Column:", targetColumn);
+    e.preventDefault();
+    const projectId = e.dataTransfer.getData("text/plain");
+    console.log("Project ID:", projectId);
+    const draggedItem = columns[targetColumn].find(
+      (item) => item.id === projectId
+    );
+    // const draggedIte = columns[inProgress].find((item) => item.id === projectId);
+
+    console.log("Dragged Item:", draggedItem);
+    if (draggedItem) {
+      const updatedColumn = columns[targetColumn].filter(
+        (item) => item.id !== projectId
+      );
+      setColumns((prevColumns) => ({
+        ...prevColumns,
+        [targetColumn]: updatedColumn,
+        [e.target.id]: [...prevColumns[e.target.id], draggedItem],
+      }));
+    }
+  };
+
+  // generate random colors................
+  const generateRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
   return (
-    <div className='main-container'>
-
-        <div className='child-container'>
-        <Modal open={open} onClose={handleClose}>
+    <div className="main-container">
+      {/* To Do Column */}
+      <div
+        className="child-container"
+        onDrop={(e) => handleDrop(e, "todo")}
+        onDragOver={handleDragOver}
+        id="todo-column"
+      >
+        <div className="first-child-container">
+          <h3>To Do</h3>
+          <MoreHorizIcon />
+        </div>
+        {columns.todo.map((item) => (
+          <div
+            key={item.id}
+            className="second-child-container"
+            draggable
+            onDragStart={(e) => handleDragStart(e, item.id)}
+            onDragOver={handleDragOver}
+          >
+            <hr
+              className="hr-tag"
+              style={{ backgroundColor: generateRandomColor() }}
+            />
+            <p>{item.projectName}</p>
+            <div className="icon-container">
+              <SubjectIcon />
+              {item.like.length === 0 ? (
+                ""
+              ) : (
+                <div className="message-container">
+                  <ChatBubbleOutlineIcon />
+                  <p>{item.like}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+        <div className="third-child-container" onClick={handleOpen}>
+          <AddIcon />
+          <p>Add a card</p>
+        </div>
+      </div>
+      {/* Modal for To Do */}
+      <Modal open={open} onClose={handleClose}>
         <Box
           sx={{
-            position: 'absolute',
-            borderRadius:'10px',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: 'background.paper',
+            position: "absolute",
+            borderRadius: "10px",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            bgcolor: "background.paper",
             boxShadow: 24,
             p: 4,
             width: 400,
-            maxWidth: '90%',
+            maxWidth: "90%",
           }}
         >
           <Typography variant="h6" gutterBottom>
@@ -180,7 +200,7 @@ const Home = () => {
           </Typography>
           <TextField
             label="Project Name"
-            name='inputValue1'
+            name="inputValue1"
             value={inputValue.inputValue1}
             onChange={handleInputChange}
             fullWidth
@@ -188,64 +208,85 @@ const Home = () => {
           />
           <TextField
             label="Likes"
-            name='inputValue2'
+            name="inputValue2"
             value={inputValue.inputValue2}
             onChange={handleInputChange}
             fullWidth
             margin="normal"
           />
-     
-          <Button variant="contained" color="primary" sx={{  color: 'white', backgroundColor: 'green', margin:'auto 160px' }} onClick={handleAddButtonClick}>Add</Button>
-
-          
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              color: "white",
+              backgroundColor: "green",
+              margin: "auto 160px",
+            }}
+            onClick={() => handleAddButtonClick("todo")}
+          >
+            Add
+          </Button>
         </Box>
       </Modal>
-     <div>
-        <div className='first-child-container'>
-            <h3>To Do</h3>
-            <MoreHorizIcon/>
-        </div>
 
-       {firstState.map((ele,ind)=>{
-            return  (
-                <div className='second-child-container'>
-                <hr className='hr-tag' style={{ backgroundColor: generateRandomColor() }}/>
-                <p>{ele.projectName}</p>
-                 <div className='icon-container'>
-              <SubjectIcon/>
-              <ChatBubbleOutlineIcon/>
-                 </div>
+      {/* In Progress Column */}
+      <div
+        className="child-container"
+        onDrop={(e) => handleDrop(e, "inProgress")}
+        onDragOver={handleDragOver}
+        id="inProgress-column"
+      >
+        {/* Content for In Progress column */}
+        <div className="first-child-container">
+          <h3>In Progress</h3>
+          <MoreHorizIcon />
+        </div>
+        {columns.inProgress.map((item) => (
+          <div
+            key={item.id}
+            className="second-child-container"
+            draggable
+            onDragStart={(e) => handleDragStart(e, item.id)}
+            onDragOver={handleDragOver}
+          >
+            <hr
+              className="hr-tag"
+              style={{ backgroundColor: generateRandomColor() }}
+            />
+            <p>{item.projectName}</p>
+            <div className="icon-container">
+              <SubjectIcon />
+              {item.like.length === 0 ? (
+                ""
+              ) : (
+                <div className="message-container">
+                  <ChatBubbleOutlineIcon />
+                  <p>{item.like}</p>
                 </div>
-            )
-       })}
-
-
-        <div className='third-child-container' onClick={handleOpen}>
-        <AddIcon/>
-        <p>Add a card</p>
+              )}
+            </div>
+          </div>
+        ))}
+        <div className="third-child-container" onClick={handleOpen1}>
+          <AddIcon />
+          <p>Add a card</p>
         </div>
- 
-        <div>
+      </div>
 
-        </div>
-        <div></div>
-     </div>
-        </div>
-  
-     <div className='child-container'>
-          <Modal open={open} onClose={handleClose}>
+      {/* Modal for In Progress */}
+      <Modal open={open1} onClose={handleClose1}>
         <Box
           sx={{
-            position: 'absolute',
-            borderRadius:'10px',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: 'background.paper',
+            position: "absolute",
+            borderRadius: "10px",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            bgcolor: "background.paper",
             boxShadow: 24,
             p: 4,
             width: 400,
-            maxWidth: '90%',
+            maxWidth: "90%",
           }}
         >
           <Typography variant="h6" gutterBottom>
@@ -253,72 +294,93 @@ const Home = () => {
           </Typography>
           <TextField
             label="Project Name"
-            name='inputval1'
-            value={inputval.inputval1}
-            onChange={handlechng}
+            name="inputValue1"
+            value={inputValue.inputValue1}
+            onChange={handleInputChange}
             fullWidth
             margin="normal"
           />
           <TextField
             label="Likes"
-            name='inputval2'
-            value={inputval.inputval2}
-            onChange={handlechng}
+            name="inputValue2"
+            value={inputValue.inputValue2}
+            onChange={handleInputChange}
             fullWidth
             margin="normal"
           />
-     
-          <Button variant="contained" color="primary" sx={{  color: 'white', backgroundColor: 'green', margin:'auto 160px' }} onClick={handleAdButtonClick}>Add</Button>
-
-          
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              color: "white",
+              backgroundColor: "green",
+              margin: "auto 160px",
+            }}
+            onClick={() => handleAddButtonClick("inProgress")} // Fixed function name
+          >
+            Add
+          </Button>
         </Box>
       </Modal>
-     <div>
-        <div className='first-child-container'>
-            <h3>In Progress</h3>
-            <MoreHorizIcon/>
-        </div>
 
-       {frstState.map((ele,ind)=>{
-            return  (
-                <div className='second-child-container'>
-                <hr className='hr-tag' style={{ backgroundColor: generateRandomColor() }}/>
-                <p>{ele.projectName}</p>
-                 <div className='icon-container'>
-              <SubjectIcon/>
-              <ChatBubbleOutlineIcon/>
-                 </div>
+      {/* In review Column */}
+      <div
+        className="child-container"
+        onDrop={(e) => handleDrop(e, "review")}
+        onDragOver={handleDragOver}
+        id="review-column"
+      >
+        {/* Content for Review column */}
+        <div className="first-child-container">
+          <h3>Review</h3>
+          <MoreHorizIcon />
+        </div>
+        {columns.review.map((item) => (
+          <div
+            key={item.id}
+            className="second-child-container"
+            draggable
+            onDragStart={(e) => handleDragStart(e, item.id)}
+            onDragOver={handleDragOver}
+          >
+            <hr
+              className="hr-tag"
+              style={{ backgroundColor: generateRandomColor() }}
+            />
+            <p>{item.projectName}</p>
+            <div className="icon-container">
+              <SubjectIcon />
+              {item.like.length === 0 ? (
+                ""
+              ) : (
+                <div className="message-container">
+                  <ChatBubbleOutlineIcon />
+                  <p>{item.like}</p>
                 </div>
-            )
-       })}
-
-
-        <div className='third-child-container' onClick={handleOpen}>
-        <AddIcon/>
-        <p>Add a card</p>
+              )}
+            </div>
+          </div>
+        ))}
+        <div className="third-child-container" onClick={handleOpen2}>
+          <AddIcon />
+          <p>Add a card</p>
         </div>
- 
-        <div>
+      </div>
 
-        </div>
-        <div></div>
-     </div>
-    
-     </div>
-     <div className='child-container'>
-     <Modal open={open} onClose={handleClose}>
+      {/* modal for review */}
+      <Modal open={open2} onClose={handleClose2}>
         <Box
           sx={{
-            position: 'absolute',
-            borderRadius:'10px',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: 'background.paper',
+            position: "absolute",
+            borderRadius: "10px",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            bgcolor: "background.paper",
             boxShadow: 24,
             p: 4,
             width: 400,
-            maxWidth: '90%',
+            maxWidth: "90%",
           }}
         >
           <Typography variant="h6" gutterBottom>
@@ -326,71 +388,94 @@ const Home = () => {
           </Typography>
           <TextField
             label="Project Name"
-            name='inputvalues1'
-            value={inputvalues.inputvalues1}
-            onChange={handlchnge}
+            name="inputValue1"
+            value={inputValue.inputValue1}
+            onChange={handleInputChange}
             fullWidth
             margin="normal"
           />
           <TextField
             label="Likes"
-            name='inputvalues2'
-            value={inputvalues.inputvalues2}
-            onChange={handlchnge}
+            name="inputValue2"
+            value={inputValue.inputValue2}
+            onChange={handleInputChange}
             fullWidth
             margin="normal"
           />
-     
-          <Button variant="contained" color="primary" sx={{  color: 'white', backgroundColor: 'green', margin:'auto 160px' }} onClick={handlePlusButtonClick}>Add</Button>
-
-          
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              color: "white",
+              backgroundColor: "green",
+              margin: "auto 160px",
+            }}
+            onClick={() => handleAddButtonClick("review")}
+          >
+            Add
+          </Button>
         </Box>
       </Modal>
-     <div>
-        <div className='first-child-container'>
-            <h3>Review</h3>
-            <MoreHorizIcon/>
-        </div>
 
-       {firstst.map((ele,ind)=>{
-            return  (
-                <div className='second-child-container'>
-                <hr className='hr-tag' style={{ backgroundColor: generateRandomColor() }}/>
-                <p>{ele.projectName}</p>
-                 <div className='icon-container'>
-              <SubjectIcon/>
-              <ChatBubbleOutlineIcon/>
-                 </div>
+      {/* Done Column */}
+      <div
+        className="child-container"
+        onDrop={(e) => handleDrop(e, "done")}
+        onDragOver={handleDragOver}
+        id="done-column"
+      >
+        {/* Content for Done column */}
+        <div className="first-child-container">
+          <h3>Done</h3>
+          <MoreHorizIcon />
+        </div>
+        {columns.done.map((item) => (
+          <div
+            key={item.id}
+            className="second-child-container"
+            draggable
+            onDragStart={(e) => handleDragStart(e, item.id)}
+            onDragOver={handleDragOver}
+          >
+            <hr
+              className="hr-tag"
+              style={{ backgroundColor: generateRandomColor() }}
+            />
+            <p>{item.projectName}</p>
+            <div className="icon-container">
+              <SubjectIcon />
+              {item.like.length === 0 ? (
+                ""
+              ) : (
+                <div className="message-container">
+                  <ChatBubbleOutlineIcon />
+                  <p>{item.like}</p>
                 </div>
-            )
-       })}
-
-
-        <div className='third-child-container' onClick={handleOpen}>
-        <AddIcon/>
-        <p>Add a card</p>
+              )}
+            </div>
+          </div>
+        ))}
+        <div className="third-child-container" onClick={handleOpen3}>
+          <AddIcon />
+          <p>Add a card</p>
         </div>
- 
-        <div>
+      </div>
 
-        </div>
-      
-     </div>
-     </div>
-     <div className='child-container'>
-     <Modal open={open} onClose={handleClose}>
+      {/* modal for Done */}
+
+      <Modal open={open3} onClose={handleClose3}>
         <Box
           sx={{
-            position: 'absolute',
-            borderRadius:'10px',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: 'background.paper',
+            position: "absolute",
+            borderRadius: "10px",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            bgcolor: "background.paper",
             boxShadow: 24,
             p: 4,
             width: 400,
-            maxWidth: '90%',
+            maxWidth: "90%",
           }}
         >
           <Typography variant="h6" gutterBottom>
@@ -398,59 +483,36 @@ const Home = () => {
           </Typography>
           <TextField
             label="Project Name"
-            name='inpValues1'
-            value={inpValues.inpValues1}
-            onChange={handlInptChanges}
+            name="inputValue1"
+            value={inputValue.inputValue1}
+            onChange={handleInputChange}
             fullWidth
             margin="normal"
           />
           <TextField
             label="Likes"
-            name='inpValues2'
-            value={inpValues.inpValues2}
-            onChange={handlInptChanges}
+            name="inputValue2"
+            value={inputValue.inputValue2}
+            onChange={handleInputChange}
             fullWidth
             margin="normal"
           />
-     
-          <Button variant="contained" color="primary" sx={{  color: 'white', backgroundColor: 'green', margin:'auto 160px' }} onClick={handleAddingButtonClick}>Add</Button>
-
-          
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              color: "white",
+              backgroundColor: "green",
+              margin: "auto 160px",
+            }}
+            onClick={() => handleAddButtonClick("done")}
+          >
+            Add
+          </Button>
         </Box>
       </Modal>
-     <div>
-        <div className='first-child-container'>
-            <h3>Done</h3>
-            <MoreHorizIcon/>
-        </div>
-
-       {frstStates.map((ele,ind)=>{
-            return  (
-                <div className='second-child-container'>
-                <hr className='hr-tag' style={{ backgroundColor: generateRandomColor() }}/>
-                <p>{ele.projectName}</p>
-                 <div className='icon-container'>
-              <SubjectIcon/>
-              <ChatBubbleOutlineIcon/>
-                 </div>
-                </div>
-            )
-       })}
-
-
-        <div className='third-child-container' onClick={handleOpen}>
-        <AddIcon/>
-        <p>Add a card</p>
-        </div>
- 
-        <div>
-
-        </div>
-      
-     </div>
-     </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

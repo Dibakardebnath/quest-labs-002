@@ -4,6 +4,7 @@
     gap: 10px;
     padding: 10px;
     background-color: #3179ba;
+    /* height: 100vh; */
 }
 
 .child-container{
@@ -61,7 +62,8 @@
     /* border: 1px solid; */
     width: max-content;
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 15px;
 
   }
 
@@ -77,4 +79,11 @@
 
  .modal-buttom{
     border: 1px solid red;
+ }
+
+ .message-container{
+  /* border: 1px solid; */
+  display: flex;
+  align-items: center;
+  gap: 5px;
  }
